@@ -15,11 +15,14 @@ void enterNumber(string msg, int number)
     int count = 0;    
     for (int i = 0; i < number; i++)
     {
-        Console.Write($"Введите число №{i + 1} : ");
+        Console.Write($"Введите число № {i + 1} : ");
         int enterNumber = int.Parse(Console.ReadLine()!);
-        if ( enterNumber > 0) count++;
-        if (i != number - 1) str = str + Convert.ToString(enterNumber) + ", ";        
-        else str = str + Convert.ToString(enterNumber) + "]";      
+        if ( enterNumber > 0) 
+            count++;
+        if (i != number - 1) 
+            str += Convert.ToString(enterNumber) + ", ";        
+        else 
+            str += Convert.ToString(enterNumber) + "]";      
     }  
     Console.Write($"{msg}{str} - ");
     Console.ForegroundColor = ConsoleColor.DarkBlue; 
