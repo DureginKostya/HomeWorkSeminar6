@@ -1,4 +1,4 @@
-﻿/*Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+﻿/* Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 0, 7, 8, -2, -2 -> 2
 1, -7, 567, 89, 223-> 3
 */
@@ -9,29 +9,22 @@ int getUserData(string msg)
     int number = int.Parse(Console.ReadLine()!);
     return number;
 }
-int[] enterNumber(int number)
+void enterNumber(string msg, int number)
 {
-    int[] array = new int[number];
+    string str = string.Empty;
+    int count = 0;    
     for (int i = 0; i < number; i++)
     {
         Console.Write($"Введите число №{i + 1} : ");
-        array[i] = int.Parse(Console.ReadLine()!);
-    }
-    Console.WriteLine();
-    return array;
-}
-void printArrayAndNumbersPositive(string msg, int[] array)
-{
-    int count = 0;
-    Console.Write($"{msg}");
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (i != array.Length - 1) Console.Write($"{array[i]}, ");
-        else Console.Write($"{array[i]}]");
-        if (array[i] > 0) count++;
-    }
-    Console.WriteLine($" - {((count != 0)? $"количество чисел больше 0 равно {count}" : "числа больше 0 не вводили")}");
+        int enterNumber = int.Parse(Console.ReadLine()!);
+        if ( enterNumber > 0) count++;
+        if (i != number - 1) str = str + Convert.ToString(enterNumber) + ", ";        
+        else str = str + Convert.ToString(enterNumber) + "]";      
+    }  
+    Console.Write($"{msg}{str} - ");
+    Console.ForegroundColor = ConsoleColor.DarkBlue; 
+    Console.WriteLine($"{((count != 0)? $"количество чисел больше 0 равно {count}":"числа больше 0 не вводили" )}");
+    Console.ResetColor();
 }
 int numberUser = getUserData("Введите количество чисел, которое хотите ввести: ");
-int[] numbersArray = enterNumber(numberUser);
-printArrayAndNumbersPositive($"Введены следующие числа [", numbersArray);
+enterNumber($"Введены числа [", numberUser);
