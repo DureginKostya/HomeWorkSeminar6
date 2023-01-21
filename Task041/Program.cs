@@ -17,16 +17,17 @@ void enterNumber(string msg, int number)
     {
         Console.Write($"Введите число № {i + 1} : ");
         int enterNumber = int.Parse(Console.ReadLine()!);
-        if ( enterNumber > 0) 
+        if (enterNumber > 0) 
             count++;
         if (i != number - 1) 
             str += Convert.ToString(enterNumber) + ", ";        
         else 
             str += Convert.ToString(enterNumber) + "]";      
     }  
+    Console.WriteLine();
     Console.Write($"{msg}{str} - ");
     Console.ForegroundColor = ConsoleColor.DarkBlue; 
-    Console.WriteLine($"{((count != 0)? $"количество чисел больше 0 равно {count}":"числа больше 0 не вводили" )}");
+    Console.WriteLine($"{((count != 0)? $"количество чисел больше 0 равно {count}" : "числа больше 0 не вводили")}");
     Console.ResetColor();
 }
 int numberUser = getUserData("Введите количество чисел, которое хотите ввести: ");
