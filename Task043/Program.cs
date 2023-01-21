@@ -3,9 +3,9 @@
 b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 */
 Console.Clear();
-int[,] getСoefficientsOfPoints(string msg, int row_col)
+int[,] getСoefficientsOfPoints(string msg, int rowCol)
 {    
-    int[,] matrix = new int[row_col,row_col];
+    int[,] matrix = new int[rowCol,rowCol];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         Console.WriteLine($"{msg} {i + 1} уравнения: y = k{i + 1} * x + b{i + 1}");
@@ -41,7 +41,7 @@ void showResult(int[,] matrix)
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine($"Прямые уравнений: y = {matrix[0,0]} * x{((matrix[0,1] >= 0)? $" + {matrix[0,1]}" : $" - {-matrix[0,1]}")}  и  y = {matrix[1,0]} * x{((matrix[1,1] >= 0)? $" + {matrix[1,1]}" : $" - {-matrix[1,1]}")}");  
     Console.ResetColor();
-    if (matrix[0,0] != matrix[1,0]) // Если равны, то прямые параллельны или совпадают
+    if (matrix[0,0] != matrix[1,0])
     {
         double[] array = getIntersectionPoint(matrix);
         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -64,5 +64,3 @@ void showResult(int[,] matrix)
 int[,] coefficients = getСoefficientsOfPoints("Введите коэффициенты", 2);
 Console.WriteLine();
 showResult(coefficients);
-
-
